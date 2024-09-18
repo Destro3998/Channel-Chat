@@ -1,0 +1,47 @@
+version: "3"
+services:
+  front:
+    build:
+      context: "./"
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    container_name: react-container
+    environment:
+      - WATCHPACK_POLLING=true
+    networks:
+      - mern-stack-network
+    volumes:
+      - ./:/app
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: "./backend"
+      dockerfile: Dockerfile
+    ports:
+      - 8800:8800
+    container_name: express-container
+    networks:
+      - mern-stack-network
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql
+    ports:
+      - 3307:3306
+    container_name: mysql-container
+    networks:
+      - mern-stack-network
+    volumes:
+      - mysqlData:/data/db
+    environment:
+      - user=root
+      - password=password
+      - database=social
+networks:
+  mern-stack-network:
+volumes:
+  mysqlData:

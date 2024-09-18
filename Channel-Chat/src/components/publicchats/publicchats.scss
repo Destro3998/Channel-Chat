@@ -1,0 +1,36 @@
+.publichcats {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  align-items: center;
+
+  flex-direction: column;
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+
+    input {
+      border: none;
+      width: 500px;
+      background-color: transparent;
+      // color: themed("textColor");
+      outline: none;
+    }
+  }
+  // .profiles {
+  .usersProfiles {
+    width: 200px;
+    margin: 2px;
+    background-color: #eee;
+    padding: 2rem 1rem;
+    color: darkblue;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+  // }
+}
